@@ -46,9 +46,6 @@ class Produto(models.Model):
         
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            slug = f'{slugify(self.nome)}'
-            self.slug = slug
 
         super().save(*args, **kwargs)
 
@@ -71,6 +68,9 @@ class Variacao(models.Model):
     def __str__(self):
         return self.nome or self.produto.nome
 
+    class Meta:
+        verbose_name='Variação'
+        verbose_name_plural='Variações'
 
     
         
